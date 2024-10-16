@@ -1,11 +1,12 @@
 /* Dark Mode Styling with Glass Effect */
 body {
     font-family: Arial, sans-serif;
-    background: url('\once human wallaper 1.jpg') no-repeat center center fixed; /* Add your background image */
+    background: url('once human wallaper 1.jpg') no-repeat center center fixed; /* Add your background image */
     background-size: cover; /* Ensure the background image covers the entire screen */
     margin: 0;
     padding: 0;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -56,7 +57,25 @@ p {
     color: #bbb;
 }
 
-/* Media Queries for Mobile */
+/* Buy Me a Coffee Button Styling */
+.buy-coffee-container {
+    position: fixed; /* Fixes the button to the viewport */
+    bottom: 20px; /* Distance from the bottom */
+    right: 20px; /* Distance from the right */
+    z-index: 1000; /* Ensure it appears above other content */
+    text-align: center; /* Center the button */
+}
+
+.buy-coffee-container img {
+    border-radius: 10px; /* Optional: Round the corners of the button */
+    transition: transform 0.3s ease; /* Add a hover effect */
+}
+
+.buy-coffee-container img:hover {
+    transform: scale(1.1); /* Scale up the button on hover */
+}
+
+/* Media Queries for Responsive Design */
 @media (max-width: 600px) {
     h1 {
         font-size: 1.5em;
@@ -74,4 +93,10 @@ p {
     p {
         font-size: 1em;
     }
+
+    .buy-coffee-container {
+        bottom: 10px; /* Adjust distance from bottom */
+        right: 10px; /* Adjust distance from right */
+    }
 }
+v

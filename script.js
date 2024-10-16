@@ -1,55 +1,41 @@
-// Function to validate Stardust Ore input and ensure it's a multiple of 50
 function validateOreInput() {
-    const oreInput = document.getElementById("stardustOre");
-    let ore = parseFloat(oreInput.value);
-    const resultText = document.getElementById("result");
+    const oreInput = document.getElementById('stardustOre');
+    const fuelInput = document.getElementById('portableFuel');
+    const resultText = document.getElementById('result');
 
-    if (oreInput.value === "") {
-        resultText.innerHTML = ""; // Clear result if input is empty
-        return;
+    // Clear the other input when one is filled
+    if (oreInput.value) {
+        fuelInput.value = ''; // Clear fuel input
     }
 
-    // Round the input down to the nearest multiple of 50
-    if (ore < 50) {
-        ore = 50; // Minimum is 50
+    const oreValue = parseInt(oreInput.value);
+    if (!isNaN(oreValue) && oreValue > 0) {
+        // Get the nearest lower multiple of 50 or default to 50 if below
+        const nearestValidOre = oreValue < 50 ? 50 : Math.floor(oreValue / 50) * 50;
+        const fuelNeeded = (nearestValidOre / 50) * 15;
+        resultText.innerText = `You need ${fuelNeeded} Portable Mixed Fuel for ${nearestValidOre} Stardust Ore.`;
     } else {
-        ore = Math.floor(ore / 50) * 50;
+        resultText.innerText = '';
     }
-
-    // Calculate fuel needed and display result
-    calculateFuel(ore);
 }
 
-// Function to validate Fuel input and calculate Stardust Ore needed
 function validateFuelInput() {
-    const fuelInput = document.getElementById("portableFuel");
-    let fuel = parseFloat(fuelInput.value);
-    const resultText = document.getElementById("result");
+    const oreInput = document.getElementById('stardustOre');
+    const fuelInput = document.getElementById('portableFuel');
+    const resultText = document.getElementById('result');
 
-    if (fuelInput.value === "") {
-        resultText.innerHTML = ""; // Clear result if input is empty
-        return;
+    // Clear the other input when one is filled
+    if (fuelInput.value) {
+        oreInput.value = ''; // Clear ore input
     }
 
-    // Round down to nearest multiple of 15 since 15 fuel crafts 50 ore
-    if (fuel < 15) {
-        fuel = 15; // Minimum is 15
+    const fuelValue = parseInt(fuelInput.value);
+    if (!isNaN(fuelValue) && fuelValue > 0) {
+        // Get the nearest lower multiple of 15 or default to 15 if below
+        const nearestValidFuel = fuelValue < 15 ? 15 : Math.floor(fuelValue / 15) * 15;
+        const oreNeeded = (nearestValidFuel / 15) * 50;
+        resultText.innerText = `You need ${oreNeeded} Stardust Ore for ${nearestValidFuel} Portable Mixed Fuel.`;
     } else {
-        fuel = Math.floor(fuel / 15) * 15;
+        resultText.innerText = '';
     }
-
-    // Calculate Stardust Ore and display result
-    calculateOre(fuel);
-}
-
-// Function to calculate fuel needed based on Stardust Ore input
-function calculateFuel(ore) {
-    const fuelNeeded = (ore / 50) * 15;
-    document.getElementById("result").innerHTML = `You need ${fuelNeeded} Portable Mixed Fuel for ${ore} Stardust Ore.`;
-}
-
-// Function to calculate Stardust Ore based on Portable Mixed Fuel input
-function calculateOre(fuel) {
-    const oreNeeded = (fuel / 15) * 50;
-    document.getElementById("result").innerHTML = `You can craft ${oreNeeded} Stardust Ore with ${fuel} Portable Mixed Fuel.`;
 }
