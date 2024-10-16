@@ -1,0 +1,77 @@
+/* Dark Mode Styling with Glass Effect */
+body {
+    font-family: Arial, sans-serif;
+    background: url('\once human wallaper 1.jpg') no-repeat center center fixed; /* Add your background image */
+    background-size: cover; /* Ensure the background image covers the entire screen */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff; /* Light text */
+}
+
+.container {
+    background: rgba(31, 31, 31, 0.5); /* Dark background with 50% opacity for glass effect */
+    padding: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px); /* Blur effect for the glass effect */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    max-width: 90%;
+    width: 400px;
+}
+
+h1 {
+    color: #fff;
+    font-size: 1.8em;
+}
+
+input {
+    padding: 12px;
+    margin: 10px 0;
+    width: 100%; /* Full width */
+    border: 1px solid #333;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: rgba(51, 51, 51, 0.7); /* Transparent input background */
+    color: #fff; /* Light text */
+    font-size: 1em;
+}
+
+/* Remove arrows from number input */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+p {
+    font-size: 1.2em;
+    color: #bbb;
+}
+
+/* Media Queries for Mobile */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.5em;
+    }
+
+    .container {
+        padding: 15px;
+        max-width: 95%;
+    }
+
+    input {
+        font-size: 1em;
+    }
+
+    p {
+        font-size: 1em;
+    }
+}
